@@ -8,11 +8,12 @@ ATorretaCpp::ATorretaCpp()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-	/*anguloGiro = 45;
+	anguloGiro = 45;
 	tiempoRotacion = 3.0f;
-	timerHandle;*/
+	timerHandle;
 
-	/*customRootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("CustomRoot"));
+	/*Crear al objeto en el BP*/
+	customRootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("Custom Root"));
 	RootComponent = customRootComponent;
 
 	torretaComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Torreta"));
@@ -22,20 +23,20 @@ ATorretaCpp::ATorretaCpp()
 	pivotArma->SetupAttachment(torretaComponent);
 
 	armaTorreta = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ArmaTorreta"));
-	armaTorreta->SetupAttachment(pivotArma);*/
+	armaTorreta->SetupAttachment(pivotArma);
 }
 
 // Called when the game starts or when spawned
 void ATorretaCpp::BeginPlay()
 {
 	Super::BeginPlay();
-	/*GetWorld()->GetTimerManager().SetTimer(
+	GetWorld()->GetTimerManager().SetTimer(
 		timerHandle,
 		this,
 		&ATorretaCpp::GirarTorreta,
 		tiempoRotacion,
 		true
-	);*/
+	);
 }
 
 // Called every frame
@@ -47,10 +48,10 @@ void ATorretaCpp::Tick(float DeltaTime)
 
 void ATorretaCpp::GirarTorreta()
 {
-	/*FRotator incremento = FRotator(0.0f, anguloGiro, 0.0f);
+	FRotator incremento = FRotator(0.0f, anguloGiro, 0.0f);
 	pivotArma->AddRelativeRotation(incremento);
 	if (GEngine)
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Cyan, pivotArma->GetRelativeRotation().ToString());
-	}*/
+	}
 }
