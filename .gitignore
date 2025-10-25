@@ -1,0 +1,32 @@
+# Visual Studio
+.vscode/
+.vs/
+*.VC.db
+*.opensdf
+*.opendb
+*.sdf
+*.sln
+*.suo
+
+# Xcode
+*.xcodeproj
+*.xcworkspace
+
+# Build Folders
+Binaries/
+DerivedDataCache/
+Intermediate/
+Saved/
+Build/
+
+# Logs
+*.log
+
+# Auto-saves y backups
+**/Backup*/
+**/*.tmp
+**/*Autosave*.umap
+**/*Autosave*.uasset
+
+# MacOS
+.DS_Store
