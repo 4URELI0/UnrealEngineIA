@@ -14,27 +14,23 @@ class TRABAJOPRACTICOIA_API ATorretaCpp : public AActor
 public:	
 	// Sets default values for this actor's properties
 	ATorretaCpp();
-	/*UPROPERTY(VisibleAnywhere, Category = "Components");
+	UPROPERTY(VisibleAnywhere, Category = "Components")
 	USceneComponent* customRootComponent;
-
-	UPROPERTY(VisibleAnywhere, Category = "Components");
+	UPROPERTY(VisibleAnywhere, Category = "Components")
 	UStaticMeshComponent* torretaComponent;
 
-	UPROPERTY(VisibleAnywhere, Category = "Components");
+	UPROPERTY(VisibleAnywhere, Category = "Components")
 	UStaticMeshComponent* pivotArma;
 
-	UPROPERTY(VisibleAnywhere, Category = "Components");
+	UPROPERTY(VisibleAnywhere, Category = "Components")
 	UStaticMeshComponent* armaTorreta;
-
 
 	float anguloGiro;
 
-	float tiempoRotacion;
-
 	float rangoVision;
 
-	float tiempoRotacion, anguloActual = 0.0f;
-	FTimerHandle timerHandle;*/
+	float tiempoRotacion, anguloActual;
+	FTimerHandle timerHandle;
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
