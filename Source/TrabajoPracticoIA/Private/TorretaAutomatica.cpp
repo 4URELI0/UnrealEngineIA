@@ -2,12 +2,10 @@
 #include "Kismet/GameplayStatics.h"
 #include "GameFramework/Character.h"
 
-// Sets default values
 ATorretaAutomatica::ATorretaAutomatica()
 {
     PrimaryActorTick.bCanEverTick = true;
 
-    // COMPONENTES
     CustomRootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("CustomRoot"));
     RootComponent = CustomRootComponent;
 
@@ -30,7 +28,6 @@ void ATorretaAutomatica::BeginPlay()
     PC = UGameplayStatics::GetPlayerCharacter(GetWorld(), 0);
 }
 
-// Called every frame
 void ATorretaAutomatica::Tick(float DeltaTime)
 {
     Super::Tick(DeltaTime);
@@ -38,25 +35,23 @@ void ATorretaAutomatica::Tick(float DeltaTime)
     if (bPuedeApuntar && PC)
     {
         float Distancia = FVector::Dist(PC->GetActorLocation(), GetActorLocation());
-        if (Distancia < DetectionRange)
+        if (Distancia < Rango)
         {
-            FVector PlayerPos = PC->GetActorLocation();
-            FVector MyPos = PivotArma->GetComponentLocation();
+            FVector PosJugador = PC->GetActorLocation();
+            FVector PosTorreta = PivotArma->GetComponentLocation();
 
-            FVector Dir = PlayerPos - MyPos;
-            Dir.Z = 0; // Ignorar rotación vertical si solo apunta horizontalmente
+            FVector Direccion = PosJugador - PosTorreta;
+            Direccion.Z = 0;
 
-            FRotator TargetRot = Dir.Rotation();
+            FRotator TargetRot = Direccion.Rotation();
 
-            // Interpolación suave hacia el jugador
-            FRotator NewRot = FMath::RInterpTo(PivotArma->GetComponentRotation(), TargetRot, DeltaTime, RotationSpeed);
+            FRotator NewRot = FMath::RInterpTo(PivotArma->GetComponentRotation(), TargetRot, DeltaTime, VelocidadRotacion);
 
             PivotArma->SetWorldRotation(NewRot);
         }
     }
 }
 
-// Función auxiliar opcional (por si la querés llamar desde Blueprint)
 FRotator ATorretaAutomatica::ApuntarJugador(ACharacter* Target)
 {
     if (!Target || !PivotArma) return FRotator::ZeroRotator;
